@@ -1,0 +1,26 @@
+{
+  "name": "sails-docgen",
+  "version": "0.0.0",
+  "description": "Generate markdown documentation from your sails.js app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tjwebb/sails-docgen.git"
+  },
+  "author": "Travis Webb <me@traviswebb.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjwebb/sails-docgen/issues"
+  },
+  "homepage": "https://github.com/tjwebb/sails-docgen",
+  "dependencies": {
+    "commander": "^2.6.0",
+    "ejs": "^2.2.3",
+    "lodash": "^3.0.0",
+    "mkdirp": "^0.5.0",
+    "sails": "^0.10.5"
+  }
+}
