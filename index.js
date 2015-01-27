@@ -1,4 +1,7 @@
-console.log('sails-docgen');
+#!/usr/bin/env node
+
+'use strict';
+
 var fs = require('fs');
 var path = require('path');
 var ejs = require('ejs');
@@ -6,7 +9,7 @@ var SailsApp = require('sails').Sails;
 var program = require('commander');
 
 program
-  .command('gen [appName] [component]')
+  .command('* [appName] [component]')
   .action(function (appName, component) {
 
     var app = new SailsApp();
