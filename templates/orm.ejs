@@ -1,24 +1,25 @@
 # Waterline ORM
 <% _.each(sails.models, function (model, name) {
   if (!model.globalId) return; %>
-  ### <%- model.globalId %>
+### <%- model.globalId %>
 
-  <%- model.description %>
+<%- model.description %>
 
-  | config | value |
-  |:---|:---|
-  | rest? | `<%- !!sails.controllers[name] %>` |
-  | table | `<%- model.tableName %>` |
-  | connection | `<%- model.connection %>` |
-  | extends | `<%- model.extend %>` |
-  | autoPK | `<%- model.autoPK %>` |
+| config | value |
+|:---|:---|
+| rest? | `<%- !!sails.controllers[name] %>` |
+| table | `<%- model.tableName %>` |
+| connection | `<%- model.connection %>` |
+| extends | `<%- model.extend %>` |
+| autoPK | `<%- model.autoPK %>` |
 
-  | attribute | type | column | description |
-  |:---|:---|:---|:---|
-  <% _.each(model._attributes, function (attr, name) {
+| attribute | type | column | description |
+|:---|:---|:---|:---| <% _.each(model._attributes, function (attr, name) {
     var model = attr.model && sails.models[attr.model].globalId;
-    var collection = attr.collection && sails.models[attr.collection].globalId; %>
-  | <%- name %> | `<%- attr.type || model || collection %>` | <%- attr.columnName %> | <%- attr.description %> | <% -%>
+    var collection = attr.collection && sails.models[attr.collection].globalId;
+    var type = attr.type || model || collection; %>
+<% -%>
+| <%- name %> | `<%- type %>` | <%- attr.columnName %> | <%- attr.description %> | <% -%>
   <% }); %>
 
 <% }); %>

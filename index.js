@@ -8,27 +8,25 @@ var ejs = require('ejs');
 var SailsApp = require('sails').Sails;
 var program = require('commander');
 
-program
-  .command('* [appName] [component]')
-  .action(function (appName, component) {
+var app = new SailsApp();
+var config = { 
+  //appPath: '.',
+  hooks: {
+    grunt: false
+  },
+  permissions: {
+    adminPassword: 'test1234'
+  }
+};  
 
-    var app = new SailsApp();
-    var config = { 
-      appPath: path.dirname(require.resolve(appName)),
-      hooks: {
-        grunt: false
-      },
-      permissions: {
-        adminPassword: 'test1234'
-      }
-    };  
-
-    app.load(config, function (error, sails) {
-      var template = fs.readFileSync(path.resolve('./templates', component + '.ejs')).toString();
-      var md = ejs.render(template);
-      require('mkdirp').sync('./docs');
-      fs.writeFileSync(path.resolve('./docs', component + '.md'), md);
-    }); 
+app.load(config, function (error, sails) {
+  require('mkdirp').sync('docs');
+  fs.readdirSync(path.resolve(__dirname, 'templates')).forEach(function (_template) {
+    var template = path.resolve(__dirname, 'templates', _template);
+    var templateString = fs.readFileSync(template).toString('ascii');
+    console.log(template);
+    console.log(templateString);
+    var md = ejs.render(templateString);
+    fs.writeFileSync(path.resolve('docs', path.basename(template, '.ejs') + '.md'), md);
   });
-
-program.parse(process.argv);
+}); 
