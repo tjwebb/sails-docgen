@@ -1,6 +1,6 @@
 {
   "name": "sails-docgen",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generate markdown documentation from your sails.js app",
   "bin": "./index.js",
   "repository": {
