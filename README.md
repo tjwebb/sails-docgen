@@ -13,15 +13,8 @@ $ npm install -g sails-docgen
 
 ## Usage
 ```sh
-$ sails-docgen <module> <layer>
+$ sails-docgen
 ```
-Where `<module>` is the name of the npm package you'd like to document, and
-`<layer>` is one of:
-
-- orm
-- rest
-- policies
-- services
 
 By default it will produce markdown output in a folder called `docs/`.
 
